@@ -49,6 +49,7 @@ def offset(point):
 def draw():
     # Draw white hub in the center
     screen.draw.filled_circle(offset(center), 10, 'white')
+    screen.draw.text('the sly brown fox', (20, 20))
 
 
 def update():
