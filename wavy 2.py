@@ -6,6 +6,10 @@ import pgzrun
 WIDTH = 800
 HEIGHT = 800
 
+# Scaling
+scale_x = 50
+scale_y = 200
+
 
 def offset(point):
     # Offset (0, 0) to the center of the screen
@@ -37,16 +41,16 @@ def draw():
     screen.draw.text('-1', offset((10, -200)), color='white')
 
     # This is where to start
-    x = -100 * pi
-    last_point_sin = (x, sin(x) * 200)
-    last_point_cos = (x, cos(x) * 200)
+    x = -2 * pi * scale_x
+    last_point_sin = (x, sin(x) * scale_y)
+    last_point_cos = (x, cos(x) * scale_y)
 
     # Repeat for a set of points
-    while x <= 100 * pi:
+    while x <= 2 * pi * scale_x:
 
         # Calculate the values of sin and cos at each point
-        y_sin = sin(x / 50) * 200
-        y_cos = cos(x / 50) * 200
+        y_sin = sin(x / scale_x) * scale_y
+        y_cos = cos(x / scale_x) * scale_y
 
         next_point_sin = x, y_sin
         next_point_cos = x, y_cos
