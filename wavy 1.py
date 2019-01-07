@@ -14,19 +14,19 @@ def offset(point):
 
 def draw():
     x = -100 * pi
-    last_point = (x, 0)
+    start_point = (x, 0)
 
     screen.draw.line(offset((-350, 0)) , offset((350, 0)), 'white')
     screen.draw.line(offset((0, 350)), offset((0, -350)), 'white')
 
     while x <= 100 * pi:
         y = sin(x / 50) * 200
-        next_point = x, y
-        print(last_point, next_point)
+        end_point = x, y
+        print(start_point, end_point)
 
-        screen.draw.line(offset(last_point), offset(next_point), 'yellow')
+        screen.draw.line(offset(start_point), offset(end_point), 'yellow')
         x += pi
-        last_point = next_point
+        start_point = end_point
 
 
 

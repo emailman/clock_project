@@ -42,28 +42,31 @@ def draw():
 
     # This is where to start
     x = -2 * pi * scale_x
-    last_point_sin = (x, sin(x) * scale_y)
-    last_point_cos = (x, cos(x) * scale_y)
+    start_point_sin = (x, sin(x) * scale_y)
+    start_point_cos = (x, cos(x) * scale_y)
 
-    # Repeat for a set of points
-    while x <= 2 * pi * scale_x:
+    # Repeat for a set of points (.5 is a tweak to get to 360 degrees)
+    while x <= .5 + 2 * pi * scale_x:
 
         # Calculate the values of sin and cos at each point
         y_sin = sin(x / scale_x) * scale_y
         y_cos = cos(x / scale_x) * scale_y
 
-        next_point_sin = x, y_sin
-        next_point_cos = x, y_cos
+        end_point_sin = x, y_sin
+        end_point_cos = x, y_cos
 
         # Draw a line segment
-        screen.draw.line(offset(last_point_sin), offset(next_point_sin), 'red')
-        screen.draw.line(offset(last_point_cos), offset(next_point_cos), 'yellow')
+        screen.draw.line(offset(start_point_sin), offset(end_point_sin), 'red')
+        screen.draw.line(offset(start_point_cos), offset(end_point_cos), 'yellow')
 
-        last_point_sin = next_point_sin
-        last_point_cos = next_point_cos
+        start_point_sin = end_point_sin
+        start_point_cos = end_point_cos
+
+        print('angle(degrees) = {:.1f} : sine = {:.4f} : cosine = {:.4f}'.
+              format(180 * x / scale_x / pi, start_point_sin[1] / scale_y, start_point_cos[1] / scale_y))
 
         # Move to the next point
-        x += pi
+        x += pi /4
 
 
 pgzrun.go()
